@@ -1,42 +1,5 @@
 <template>
   <v-app>
-    <v-app-bar
-      app
-      color="primary"
-      dark
-    >
-      <div class="d-flex align-center">
-        <v-img
-          alt="Vuetify Logo"
-          class="shrink mr-2"
-          contain
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-logo-dark.png"
-          transition="scale-transition"
-          width="40"
-        />
-
-        <v-img
-          alt="Vuetify Name"
-          class="shrink mt-1 hidden-sm-and-down"
-          contain
-          min-width="100"
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-name-dark.png"
-          width="100"
-        />
-      </div>
-
-      <v-spacer></v-spacer>
-
-      <v-btn
-        href="https://github.com/vuetifyjs/vuetify/releases/latest"
-        target="_blank"
-        text
-      >
-        <span class="mr-2">Latest Release</span>
-        <v-icon>mdi-open-in-new</v-icon>
-      </v-btn>
-    </v-app-bar>
-
     <v-main>
       <router-view/>
     </v-main>
@@ -53,3 +16,27 @@ export default {
   }),
 };
 </script>
+<style lang="scss">
+.theme--light.v-text-field--solo > .v-input__control > .v-input__slot {
+  background: linear-gradient(0deg, #FFFFFF, #FFFFFF);
+  border: 1px solid #9CABB5;
+  box-sizing: border-box;
+  border-radius: 6px;
+  box-shadow: none !important;
+
+  &:before {
+    display: none;
+  }
+}
+
+.v-input--is-focused .v-input__slot {
+  border: 1px solid #008EEF !important;
+}
+
+.v-input--is-disabled.v-text-field--solo .v-input__slot {
+  background: #F7F9FC !important;
+  border: 1px solid #D0DCE4 !important;
+  box-sizing: border-box !important;
+  border-radius: 6px !important;
+}
+</style>
