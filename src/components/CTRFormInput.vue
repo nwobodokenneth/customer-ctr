@@ -192,23 +192,5 @@ export default {
   line-height: 24px !important;
 
 }
-input.showText{
-  font-family: 'IBM Plex Serif' !important;
-  font-style: normal;
-  font-weight: 600;
-  font-size: 41px;
-  line-height: 53px;
-  letter-spacing: -0.02em;
-  color: #FFFFFF;
-  border: none!important;
-  &:focus{
-    border: 0!important;
-    outline: none!important;
-  }
-  &:active{
-    border: 0!important;
-    outline: none!important;
-  }
-}
 
 </style>
