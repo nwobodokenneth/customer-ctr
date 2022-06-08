@@ -1,7 +1,7 @@
 <template>
-  <div>
+  <div class="d-flex justify-center create">
     <v-btn @click="showModal">
-      Create Form
+      Create Custom CTR
     </v-btn>
     <CTRModal v-model="open" @closeModal="open = false"/>
   </div>
@@ -25,6 +25,14 @@ export default {
 }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
+.create {
+  margin: 10rem auto;
+@media (min-width: 768px) {
+  align-items: center;
+  justify-content: center;
+  max-width: 400px;
+}
+}
 
 </style>

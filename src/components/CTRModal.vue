@@ -4,7 +4,7 @@
         v-bind="{ ...$props, ...$attrs }"
         v-on="$listeners"
         max-width="450"
-        transition="scale-transition"
+        transition="fab-transition"
         origin="center center"
         persistent>
       <v-card class="pa-5 rounded-lg" elevation="0">
@@ -37,22 +37,24 @@
               </div>
             </div>
             <v-divider class="mt-3 mb-5"/>
-            <div class="px-3 mb-2" v-for="(item, index) in formData" :key="item.id">
-              <CTRFormInput
-                  :index="index"
-                  :basket-length="formData.length"
-                  @input="onFieldInput($event, index, item)"
-                  @value="updateForm($event, index, item)"
-                  @delete="deleteItem(index)"
-                  @blur="changeItem(true, item)"
-                  @focus="changeItem(false, item)"
-                  :item="item"/>
-            </div>
-            <div class="px-3 mt-5">
-              <v-btn depressed @click="addNewField" color="white" block class="text-capitalize rounded-pill">
-                <v-icon>mdi-plus</v-icon>
-                Add Another Field
-              </v-btn>
+            <div class="scroll">
+              <div class="px-3 mb-2" v-for="(item, index) in formData" :key="item.id">
+                <CTRFormInput
+                    :index="index"
+                    :basket-length="formData.length"
+                    @input="onFieldInput($event, index, item)"
+                    @value="updateForm($event, index, item)"
+                    @delete="deleteItem(index)"
+                    @blur="changeItem(true, item)"
+                    @focus="changeItem(false, item)"
+                    :item="item"/>
+              </div>
+              <div class="px-3 mt-5">
+                <v-btn depressed @click="addNewField" color="white" block class="text-capitalize rounded-pill">
+                  <v-icon>mdi-plus</v-icon>
+                  Add Another Field
+                </v-btn>
+              </div>
             </div>
           </div>
           <div class="d-flex justify-center align-center mx-auto mt-5 ">
@@ -256,7 +258,23 @@ export default {
   color: #475661;
 }
 .color__card{
-  background-color: #F4F5F5
+  background-color: #F4F5F5;
+}
+.scroll {
+  height: 62vh;
+  overflow: scroll;
+  overflow-x: hidden;
+}
+.scroll::-webkit-scrollbar {
+  background: transparent !important;
+  width: 6px;
+  height: 15px;
+}
+
+.scroll::-webkit-scrollbar-thumb {
+  background: rgba(43, 28, 28, 0.1);
+  max-height: 10px !important;
+  border-radius: 6px;
 }
 .total__percentage{
   border-radius: 10px;
