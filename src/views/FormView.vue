@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import CustomerCTRForm from "@/components/CustomerCTRForm";
+import CustomerCTRForm from "@/components/CustomCTRForm";
 export default {
   name: "FormView",
   components: {CustomerCTRForm}
