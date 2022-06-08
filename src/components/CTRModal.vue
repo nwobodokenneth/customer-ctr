@@ -70,6 +70,7 @@
 
 <script>
 import CTRFormInput from "@/components/CTRFormInput";
+import {v4 as uuid} from "uuid";
 
 export default {
   name: "CTRModal",
@@ -81,48 +82,9 @@ export default {
           value: '',
           disabled: false,
           error: "",
-          id: 1,
+          id: uuid(),
           blur: true,
         },
-        {
-          value: '',
-          disabled: true,
-          error: "",
-          id: 2,
-          blur: true
-        },
-        {
-          value: '',
-          disabled: true,
-          error: "",
-          id: 3,
-          blur: true,
-
-        },
-        {
-          value: '',
-          disabled: true,
-          error: "",
-          id: 4,
-          blur: true,
-
-        },
-        {
-          value: '',
-          disabled: true,
-          error: "",
-          id: 5,
-          blur: true,
-
-        },
-        {
-          value: '',
-          disabled: true,
-          error: "",
-          id: 6,
-          blur: true,
-        },
-
       ]
     }
   },
@@ -142,6 +104,20 @@ export default {
     changeItem(val, item){
       item.blur = val
     },
+    createFormData(length=5){
+      const options = []
+      for (let i = 0; i < length; i++){
+        let option =  {
+            value: "",
+            disabled: true,
+            error: "",
+            id: uuid(),
+            blur: true,
+        }
+        options.push(option)
+      }
+      return options
+    },
     formatValue(num){
       let text;
       let displayText;
@@ -160,7 +136,7 @@ export default {
     },
     setNextItemState(index, _state) {
       const nextItem = this.formData[index + 1]
-      nextItem.disabled = _state
+      if(nextItem !== undefined) nextItem.disabled = _state
     },
     onFieldInput(value, index, item) {
       // resets error state, in case there was an error previously
@@ -183,14 +159,8 @@ export default {
     addNewField() {
       const lastField = this.formData[this.formData.length - 1]
       if (lastField.value) {
-        this.formData.push({
-          value: "",
-          disabled: false,
-          error: "",
-          id: lastField.id + 1,
-          blur: true,
-
-        })
+        const newData = this.createFormData(1)
+        this.formData.push(...newData)
       }
     },
     deleteItem(index) {
@@ -204,13 +174,8 @@ export default {
     populateForm(){
       const lastField = this.formData[this.formData.length - 1]
       if(lastField.value){
-        this.formData.push({
-          value: "",
-          disabled: false,
-          error: "",
-          id: lastField.id + 1,
-          blur: true,
-        })
+        const newData = this.createFormData(1)
+        this.formData.push(...newData)
         const newField = this.formData[this.formData.length - 1]
         newField.value = this.total_percentage
         if(newField.value > lastField.value){
@@ -221,6 +186,9 @@ export default {
 
     }
 
+  },
+  created(){
+    this.formData =[...this.formData,...this.createFormData(5)]
   }
 
 }
