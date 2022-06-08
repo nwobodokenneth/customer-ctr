@@ -158,8 +158,11 @@ export default {
     },
     addNewField() {
       const lastField = this.formData[this.formData.length - 1]
-      if (lastField.value) {
+      if (lastField.value ) {
         const newData = this.createFormData(1)
+        newData.map(e=>{
+          if (!lastField.error) e.disabled=false
+        })
         this.formData.push(...newData)
       }
     },
@@ -175,6 +178,9 @@ export default {
       const lastField = this.formData[this.formData.length - 1]
       if(lastField.value){
         const newData = this.createFormData(1)
+        newData.map(e=>{
+          if (!lastField.error) e.disabled=false
+        })
         this.formData.push(...newData)
         const newField = this.formData[this.formData.length - 1]
         newField.value = this.total_percentage
