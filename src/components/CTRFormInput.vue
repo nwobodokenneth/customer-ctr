@@ -16,9 +16,6 @@
                             type="number">
 
               </v-text-field>
-<!--              <div v-if="item.blur && item.value" @click="callFocus" class="text-center mx-auto total__percentage">-->
-<!--                {{formatValue(item.value)}}-->
-<!--              </div>-->
               <span class="tooltip__text black--text">{{item.value}}</span>
             </div>
             <div>
