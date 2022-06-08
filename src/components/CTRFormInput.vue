@@ -11,15 +11,15 @@
           </div>
           <div class="d-flex align-center">
             <div class="mr-2" :class="item.value ? 'tooltip' : ''">
-              <v-text-field v-if="!item.blur || !item.value" @blur="callBlur" @focus="callFocus" @change="updateValue" @input="callInput" :disabled="item.disabled"
-                            hide-spin-buttons hide-details style="width: 45px;" outlined :value="item.value"
+              <v-text-field @change="updateValue" @input="callInput" :disabled="item.disabled"
+                            hide-spin-buttons hide-details style="width: 45px;" outlined :value="formatValue(item.value)"
                             type="number">
 
               </v-text-field>
-              <div v-if="item.blur && item.value" @click="callFocus" class="text-center mx-auto total__percentage">
-                {{formatValue(item.value)}}
-              </div>
-              <span class="tooltiptext black--text">{{item.value}}</span>
+<!--              <div v-if="item.blur && item.value" @click="callFocus" class="text-center mx-auto total__percentage">-->
+<!--                {{formatValue(item.value)}}-->
+<!--              </div>-->
+              <span class="tooltip__text black--text">{{item.value}}</span>
             </div>
             <div>
               <span class="remain">%</span>
@@ -76,7 +76,7 @@ export default {
     formatValue(num){
       let text;
       let displayText;
-      text = num.split(".")
+      text = num.toString().split(".")
       if(text[0].length > 1 && !text[0].includes('-')  && text[1]){
         displayText = text[0] + '.' + text[1].substring(0, 1)
       }else if(text[0].length <= 1 && text[1]) {
@@ -156,7 +156,7 @@ export default {
   display: inline-block;
 }
 
-.tooltip .tooltiptext {
+.tooltip .tooltip__text {
   visibility: hidden;
   background-color: white;
   border-radius: 10px;
@@ -180,7 +180,7 @@ export default {
   z-index: 1;
 }
 
-.tooltip:hover .tooltiptext {
+.tooltip:hover .tooltip__text {
   visibility: visible;
 }
 .total__percentage{
@@ -195,4 +195,23 @@ export default {
   line-height: 24px !important;
 
 }
+input.showText{
+  font-family: 'IBM Plex Serif' !important;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 41px;
+  line-height: 53px;
+  letter-spacing: -0.02em;
+  color: #FFFFFF;
+  border: none!important;
+  &:focus{
+    border: 0!important;
+    outline: none!important;
+  }
+  &:active{
+    border: 0!important;
+    outline: none!important;
+  }
+}
+
 </style>
