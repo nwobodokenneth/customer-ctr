@@ -3,14 +3,14 @@
     <v-btn @click="showModal">
       Create Form
     </v-btn>
-    <CTRModal v-model="open" @closeModal="open = false" :open="open"/>
+    <CTRModal v-model="open" @closeModal="open = false"/>
   </div>
 </template>
 
 <script>
 import CTRModal from "@/components/CTRModal";
 export default {
-  name: "CustomerCTRForm",
+  name: "CustomCTRForm",
   components: {CTRModal},
   data(){
     return{

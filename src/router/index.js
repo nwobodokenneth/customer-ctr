@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import CustomerCTRForm from "@/components/CustomerCTRForm";
+import CustomerCTRForm from "@/components/CustomCTRForm";
 Vue.use(VueRouter)
 
 const routes = [
